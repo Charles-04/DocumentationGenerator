@@ -7,8 +7,8 @@ namespace DocGenerator
     {
         static void Main(string[] args)
         {
-            Student student = new();
             Implementation.GetDocs(typeof(Student));
+            //Implementation.GetDocs();
         }
     }
 }
