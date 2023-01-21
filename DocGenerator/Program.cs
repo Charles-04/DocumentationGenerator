@@ -1,5 +1,6 @@
 ﻿using CustomAttributes;
 using DocGenerator.Model;
+using System.Reflection;
 
 namespace DocGenerator
 {
@@ -7,7 +8,10 @@ namespace DocGenerator
     {
         static void Main(string[] args)
         {
-            Implementation.GetDocs(typeof(Student));
+            
+                Implementation.GetDocs1();
+            
+
             //Implementation.GetDocs();
         }
     }
