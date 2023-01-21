@@ -1,17 +1,18 @@
 ﻿using System;
+using System.IO;
 using System.Linq;
 
 
 namespace CustomAttributes
 {
-   
+
     public static class Implementation
     {
-        
-  
+
+
         public static void GetDocs()
         {
-            
+
             var assemblies = AppDomain.CurrentDomain.GetAssemblies();
             var members = from assembly in assemblies
                           from type in assembly.GetTypes()
@@ -19,7 +20,9 @@ namespace CustomAttributes
                           select member;
 
 
-                
+           
+            using (StreamWriter writer = File.CreateText(@"Documentation.txt"))
+            {
 
                 foreach (var member in members)
                 {
@@ -29,32 +32,36 @@ namespace CustomAttributes
                     if (attributes.Length > 0)
                     {
                         var doc = (DocumentAttribute)attributes[0];
-                        Console.WriteLine($"\nClass : {member.DeclaringType.Name}\n");
-                    if (clasAttributes.Length > 0)
-                    {
-                        var classDoc = (DocumentAttribute)clasAttributes[0];
-                        Console.WriteLine($"Description : {classDoc.Description}\n");
-                    }
-                       
-                        Console.WriteLine($"Member Type: {member.MemberType}");
-                        Console.WriteLine($"Name: {member.Name}");
+                        writer.WriteLine($"\nClass : {member.DeclaringType.Name}\n");
+                        if (clasAttributes.Length > 0)
+                        {
+                            var classDoc = (DocumentAttribute)clasAttributes[0];
+                            writer.WriteLine($"Description : {classDoc.Description}\n");
+                        }
 
-                        Console.WriteLine($"\nDescription: {doc.Description}\n");
-                    if ( doc.Input != null)
-                    {
-                        Console.WriteLine($"Input: {doc.Input}");
-                    }
-                    if (doc.Output!=null)
-                    {
-                        Console.WriteLine($"\nOutput: {doc.Output}\n");
-                    }
-                    
+                        writer.WriteLine($"Member Type: {member.MemberType}");
+                        writer.WriteLine($"Name: {member.Name}");
+
+                        writer.WriteLine($"\nDescription: {doc.Description}\n");
+                        if (doc.Input != null)
+                        {
+                            writer.WriteLine($"Input: {doc.Input}");
+                        }
+                        if (doc.Output != null)
+                        {
+                            writer.WriteLine($"\nOutput: {doc.Output}\n");
+                        }
+
                     }
 
-                } }
+                }
+
+                Console.WriteLine("Documentation created at the project bin folder");
+            }
 
 
         }
+    }
     }
 
 

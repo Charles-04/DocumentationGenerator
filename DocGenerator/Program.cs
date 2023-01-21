@@ -9,7 +9,7 @@ namespace DocGenerator
         static void Main(string[] args)
         {
             
-                Implementation.GetDocs1();
+                Implementation.GetDocs();
             
 
             //Implementation.GetDocs();
