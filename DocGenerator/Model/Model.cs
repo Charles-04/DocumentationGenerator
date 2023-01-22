@@ -23,9 +23,10 @@ namespace DocGenerator.Model
 
         public long Phone { get; set; }
 
-        [Document(description:"This method returns student age")]
-        public int GetAge()
+        [Document(description:"This method returns student age","Takes an input of type datetime, date of birth","Output Age")]
+        public int GetAge(DateTime dayOfBirth)
         {
+           
             return Age;
         }
     }

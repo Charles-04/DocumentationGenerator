@@ -56,7 +56,7 @@ namespace CustomAttributes
 
                 }
 
-                Console.WriteLine("Documentation created at the project bin folder");
+                Console.WriteLine(@"Documentation created at the folder : C:\Users\Charles\source\repos\DocumentationGenerator\DocGenerator\bin\Debug\net6.0");
             }
 
 
