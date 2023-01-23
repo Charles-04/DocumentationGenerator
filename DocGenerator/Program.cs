@@ -8,11 +8,12 @@ namespace DocGenerator
     {
         static void Main(string[] args)
         {
-            
-                Implementation.GetDocs();
-            
 
             //Implementation.GetDocs();
+
+
+            Generator.GetDocs();
+            
         }
     }
 }
